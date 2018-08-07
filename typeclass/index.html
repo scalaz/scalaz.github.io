@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/palette.css" />
     <link rel="stylesheet" href="/css/codemirror.css" />
+    <script type="text/javascript" src="/js/cytoscape.min.js"></script>
+    <script type="text/javascript" src="/js/directed.js"></script>
   </head>
   <body class="docs">
     <div id="wrapper">
@@ -113,15 +115,20 @@
               <h1 id="type-classes">Type classes</h1>
 
 <p><em>A type class is a type system construct that supports ad hoc polymorphism.
-This is achieved by adding constraints to type variables in parametrically polymorphic types.</em> <sup><a href="#f1">1</a></sup></p>
+This is achieved by adding constraints to type variables in parametrically polymorphic types.</em></p>
 
 <p>Type class instances allow us to add behaviour to types without changing the types themselves.</p>
 
-<hr />
+<h2 id="type-classes-in-scalaz">Type classes in Scalaz</h2>
 
-<p>Footnotes</p>
+<p>Here is an overview of some of the type class hierarchy present in Scalaz</p>
 
-<p><b id="f1">1</b> <a href="https://en.wikipedia.org/wiki/Type_class">https://en.wikipedia.org/wiki/Type_class</a></p>
+<div id="core_types" style="width: 100%; height: 1000px;"></div>
+
+<script type="text/javascript" src="/js/core_types.js"></script>
+
+<script>directed("#core_types", coreTypes.nodes, coreTypes.links);</script>
+
 
             </section>
           </div>
