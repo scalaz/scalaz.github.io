@@ -1,0 +1,11 @@
+name: ZIO
+baseurl: /scalaz-zio
+description: ZIO
+highlighter: rouge
+docs: true
+collections:
+  tut:
+    output: true
+version: 0.1.0-02a5ac6
+org: org.scalaz
+markdown: kramdown
