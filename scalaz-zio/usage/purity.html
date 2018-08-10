@@ -4,14 +4,14 @@
 
 <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">scalaz.zio._</span>
 
-<span class="k">val</span> <span class="k">_:</span> <span class="kt">IO</span><span class="o">[</span><span class="kt">Nothing</span>, <span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="nc">IO</span><span class="o">.</span><span class="n">point</span><span class="o">(</span><span class="s">"Hello World"</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">z</span><span class="k">:</span> <span class="kt">IO</span><span class="o">[</span><span class="kt">Nothing</span>, <span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="nc">IO</span><span class="o">.</span><span class="n">point</span><span class="o">(</span><span class="s">"Hello World"</span><span class="o">)</span>
 </code></pre></div></div>
 
 <p>The constructor uses non-strict evaluation, so the parameter will not be evaluated until when and if the <code class="highlighter-rouge">IO</code> action is executed at runtime, which is useful if the construction is costly and the value may never be needed.</p>
 
 <p>Alternately, you can use the <code class="highlighter-rouge">IO.now</code> constructor to perform strict evaluation of the value:</p>
 
-<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="k">_:</span> <span class="kt">IO</span><span class="o">[</span><span class="kt">Nothing</span>, <span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="nc">IO</span><span class="o">.</span><span class="n">now</span><span class="o">(</span><span class="s">"Hello World"</span><span class="o">)</span>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="n">z</span><span class="k">:</span> <span class="kt">IO</span><span class="o">[</span><span class="kt">Nothing</span>, <span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="nc">IO</span><span class="o">.</span><span class="n">now</span><span class="o">(</span><span class="s">"Hello World"</span><span class="o">)</span>
 </code></pre></div></div>
 
 <p>You should never use either constructor for importing impure code into <code class="highlighter-rouge">IO</code>. The result of doing so is undefined.</p>
@@ -30,7 +30,7 @@ because the <code class="highlighter-rouge">Nothing</code> type is <em>uninhabit
 
 <p>You can use the <code class="highlighter-rouge">sync</code> method of <code class="highlighter-rouge">IO</code> to import effectful synchronous code into your purely functional program:</p>
 
-<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="k">_:</span> <span class="kt">IO</span><span class="o">[</span><span class="kt">Nothing</span>, <span class="kt">Long</span><span class="o">]</span> <span class="k">=</span> <span class="nc">IO</span><span class="o">.</span><span class="n">sync</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="n">nanoTime</span><span class="o">())</span>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="n">z</span><span class="k">:</span> <span class="kt">IO</span><span class="o">[</span><span class="kt">Nothing</span>, <span class="kt">Long</span><span class="o">]</span> <span class="k">=</span> <span class="nc">IO</span><span class="o">.</span><span class="n">sync</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="n">nanoTime</span><span class="o">())</span>
 </code></pre></div></div>
 
 <p>If you are importing effectful code that may throw exceptions, you can use the <code class="highlighter-rouge">syncException</code> method of <code class="highlighter-rouge">IO</code>:</p>
